@@ -7,8 +7,8 @@ public class QuickSortEndIndexPivot {
 		int input[] = {10, 80, 30, 90, 40, 50, 70};
 		System.out.println("Before Sorting>>>" + Arrays.toString(input));
 		
-		QuickSortEndIndexPivot quickSortStartIndexPivot = new QuickSortEndIndexPivot();
-		quickSortStartIndexPivot.quickSort(input);
+		QuickSortEndIndexPivot quickSortEndIndexPivot = new QuickSortEndIndexPivot();
+		quickSortEndIndexPivot.quickSort(input);
 		
 		System.out.println("After Sorting>>>>" + Arrays.toString(input));
 
