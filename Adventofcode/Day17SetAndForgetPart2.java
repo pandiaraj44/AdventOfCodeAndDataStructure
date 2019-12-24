@@ -352,7 +352,7 @@ public class Day17SetAndForgetPart2 implements AOC<Long>{
 		movementFunctionMap.add(Arrays.asList(new String[] {"L", "12","R", "8", "L", "6", "R", "8", "L", "6"}));
 		movementFunctionMap.add(Arrays.asList(new String[] {"R", "8", "L", "12", "L", "12", "R", "8"}));
 		movementFunctionMap.add(Arrays.asList(new String[] {"L", "6", "R", "6", "L", "12"}));
-		movementFunctionMap.add(Arrays.asList(new String[] {"n"}));
+		movementFunctionMap.add(Arrays.asList(new String[] {"y"}));
 		
 		for (List<String> functionList : movementFunctionMap) {
 			for (int functionIndex = 0; functionIndex < functionList.size(); functionIndex++) {
