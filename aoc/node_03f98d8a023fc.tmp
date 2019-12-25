@@ -1,0 +1,84 @@
+const fs = require('fs');
+const input = fs.readFileSync('Day22Input.txt', 'utf-8');
+
+const INSTRUCTION_TYPE_NEW_DECK = 0;
+const INSTRUCTION_TYPE_POSITIVE_CUT = 1;
+const INSTRUCTION_TYPE_NEGATIVE_CUT = 2;
+const INSTRUCTION_TYPE_INCREAMENT = 4;
+
+const deckOfCards = 10;
+// const deckOfCards = 10007;
+
+
+
+const {instructions} = processInput(input);
+const cards = generateCards(deckOfCards);
+const processedCards = processInstructions(instructions, cards);
+console.log(processedCards);
+
+
+function processInstructions(instructions, cards) {
+  for (const instruction of instructions) {
+    switch(instruction.type) {
+      case INSTRUCTION_TYPE_NEW_DECK:
+        cards = performNewDeck(cards);
+        break; 
+      case INSTRUCTION_TYPE_POSITIVE_CUT:
+        cards = performPositiveCut(cards, instruction.data);
+        break;
+      case INSTRUCTION_TYPE_NEGATIVE_CUT:
+        cards = performNegativeCut(cards, instruction.data);
+        break;
+      case INSTRUCTION_TYPE_INCREAMENT:
+          break;  
+    }
+  }
+  return cards;
+}
+
+function performNewDeck(cards) {
+  return cards.reverse();
+}
+
+function performPositiveCut(cards, data) {
+  const cut = cards.splice(0,data);
+  cards.concat(cut);
+}
+
+function performNegativeCut(cards, data) {
+  const cut = cards.splice(cards.length - data, cards.length);
+  cut.concat(cards);
+}
+
+
+function generateCards(deckOfCards) {
+  const cards = []
+  for (let c = 0; c < deckOfCards.length; c++) {
+    cards.push(c);
+  }
+}
+
+function processInput(input) {
+  const instructionsInput = input.split('\n');
+  const instructions = []
+  for (let instructionString of instructionsInput) {
+    const instrction = {};
+    if (instructionString.includes('deal into new stack')) {
+      instrction.type = INSTRUCTION_TYPE_NEW_DECK;
+    } else if (instructionString.includes('deal with increment ')) {
+      instrction.type = INSTRUCTION_TYPE_INCREAMENT;
+      instrction.data = parseInt(instructionString.replace('deal with increment ', ''));
+    } else if (instructionString.includes('cut ')) {
+      let data = parseInt(instructionString.replace('cut ', ''));
+      if (data < 0) {
+        instrction.type = INSTRUCTION_TYPE_NEGATIVE_CUT;
+      } else {
+        instrction.type = INSTRUCTION_TYPE_POSITIVE_CUT;
+      }
+      instrction.data = Math.abs(data);
+    }
+    instructions.push(instrction);
+  }
+  
+}
+

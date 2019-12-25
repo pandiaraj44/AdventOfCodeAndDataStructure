@@ -1,0 +1,13 @@
+{
+  "name": "aoc",
+  "version": "1.0.0",
+  "description": "aoc",
+  "main": "Day22SlamShufflePart1.js",
+  "scripts": {
+    "day12part1": "node Day12NBodyProblemPart1.js",
+    "day12part2": "node Day12NBodyProblemPart2.js",
+    "day14": "node Day14SpaceStoichiometryPart1.js"
+  },
+  "author": "Pandiarajan Nagarajan",
+  "license": "ISC"
+}
