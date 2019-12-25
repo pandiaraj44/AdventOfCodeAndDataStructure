@@ -3,8 +3,9 @@ import java.util.Arrays;
 public class QuickSortEndIndexPivot {
 
 	public static void main(String[] args) {
-		// int input[] = {4, 3, 2, 1, 7 , 8};
-		int input[] = {10, 80, 30, 90, 40, 50, 70};
+		// int input[] = {8, 7, 6, 1, 0 , 9, 2};
+		int input[] = {7, 3, 2, 4, 6 , 7, 9, 1, 6, 3};
+		// int input[] = {10, 80, 30, 90, 40, 50, 70};
 		System.out.println("Before Sorting>>>" + Arrays.toString(input));
 		
 		QuickSortEndIndexPivot quickSortEndIndexPivot = new QuickSortEndIndexPivot();
@@ -19,10 +20,12 @@ public class QuickSortEndIndexPivot {
 	}
 	
 	public void quickSort(int inputArray[], int low, int high) {
+		System.out.println("quickSort called");
 		if (low < high) {
 			int partionInex = partition(inputArray, low, high);
 			System.out.println("Partition inputArray>>>> partionInex >>" + partionInex + "--"+ Arrays.toString(inputArray));
 			quickSort(inputArray, low, partionInex -1);
+			System.out.println("Right Called");
 			quickSort(inputArray, partionInex + 1, high);
 		}
 	}
